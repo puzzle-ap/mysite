@@ -1,0 +1,999 @@
+@charset "UTF-8";
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+/* 各セクションタイトルの共通プロパティ */
+.concept__sectionTitle,
+.facility__sectionTitle,
+.service__sectionTitle,
+.news__sectionTitle,
+.access__sectionTitle {
+    color: #6a3906;
+    text-align: center;
+    font-weight: normal;
+    font-size: 4rem;
+}
+
+/* ヘッダー
+==============================================================================*/
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+.header__siteTitle--kidsPark {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.header__siteTitle--lava {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 7rem;
+    font-family: "source-serif-pro", serif;
+}
+
+.header__logoBackground {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fffcdb;
+    color: #6a3906;
+    text-align: center;
+}
+
+.header__mainvisual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.header__mainvisualImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: mainvisualSlideShow 15s infinite;
+}
+
+.header__mainvisualImage:first-of-type {
+    background-image: url(../img/mainvisual1.jpg);
+    animation-delay: 0s;
+}
+
+.header__mainvisualImage:nth-of-type(2) {
+    background-image: url(../img/mainvisual2.jpg);
+    animation-delay: 5s;
+}
+
+.header__mainvisualImage:last-of-type {
+    background-image: url(../img/mainvisual3.jpg);
+    animation-delay: 10s;
+}
+
+@keyframes mainvisualSlideShow {
+    0% {
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    33% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.header__mainvisualArrowButton {
+    display: block;
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    background-color: transparent;
+    transform: translateX(-50%);
+}
+
+.header__mainvisualArrowButton.hover {
+    border: 2px solid red;
+}
+
+.header__mainvisualArrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background-color: #ffffff;
+    transform: translate(-50%, -50%);
+}
+
+.hover .header__mainvisualArrow {
+    background-color: red;
+}
+
+.header__mainvisualArrow::before {
+    content: "";
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.hover .header__mainvisualArrow::before {
+    border-right: 2px solid red;
+    border-bottom: 2px solid red;
+}
+
+.header__mainvisualArrowButton,
+.header__mainvisualArrow,
+.header__mainvisualArrow::before {
+    transition: all .3s ease;
+}
+
+.header__hamburgerButton {
+    display: block;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 100;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #6a3906;
+    border-radius: 50%;
+    background-color: #fffcdb;
+}
+
+.open .header__hamburgerButton {
+    background-color: #6a3906;
+}
+
+.header__hamburgerBar {
+    display: block;
+    position: absolute;
+    left: 25%;
+    width: 25px;
+    height: 1px;
+    background-color: #6a3906;
+}
+
+.header__hamburgerBar:first-child {
+    top: 33%;
+}
+
+.header__hamburgerBar:nth-child(2) {
+    top: 49%;
+}
+
+.header__hamburgerBar:last-child {
+    top: 66%;
+}
+
+.open .header__hamburgerBar {
+    top: 49%;
+    background-color: #fffcdb;
+}
+
+.open .header__hamburgerBar:first-child {
+    transform: rotate(-45deg);
+}
+
+.open .header__hamburgerBar:nth-child(2) {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.open .header__hamburgerBar:last-child {
+    transform: rotate(45deg);
+}
+
+.header__hamburgerMenuPanel {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    z-index: 90;
+    visibility: hidden;
+    padding: 100px 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #fffcdb;
+    text-align: center;
+    opacity: 0;
+}
+
+.open .header__hamburgerMenuPanel {
+    right: 0;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.header__hamburgerMenuPanel,
+.header__hamburgerButton,
+.header__hamburgerBar {
+    transition: all .3s ease;
+}
+
+.header__hamburgerMenuItem {
+    margin-bottom: 30px;
+    opacity: 0;
+}
+
+.open .header__hamburgerMenuItem {
+    animation: hamburgerMenuItemFadeIn 1s ease forwards;
+}
+
+.open .header__hamburgerMenuItem:nth-child(2) {
+    animation-delay: .1s;
+}
+
+.open .header__hamburgerMenuItem:nth-child(3) {
+    animation-delay: .2s;
+}
+
+.open .header__hamburgerMenuItem:nth-child(4) {
+    animation-delay: .3s;
+}
+
+.open .header__hamburgerMenuItem:last-child {
+    animation-delay: .4s;
+}
+
+@keyframes hamburgerMenuItemFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header__hamburgerMenuItemLink {
+    color: #6a3906;
+}
+
+.header__hamburgerBlackPanel {
+    position: fixed;
+    z-index: 80;
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, .7);
+    inset: 0;
+}
+
+.open .header__hamburgerBlackPanel {
+    visibility: visible;
+}
+
+/* コンセプト
+==============================================================================*/
+.concept {
+    padding: 128px 4%;
+    background-image: url(../img/concept_background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.concept__wrapper {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.concept__sectionTitle,
+.concept__text {
+    margin-bottom: 40px;
+}
+
+.concept__text {
+    padding: 25px 71px;
+    border-radius: 20px;
+    background-color: rgb(255, 252, 219, .7);
+    text-align: left;
+}
+
+/* お知らせのMoreボタンについても記載 */
+.concept__moreButton,
+.news__moreButton {
+    display: inline-block;
+    position: relative;
+    padding: 8px 81px;
+    border-radius: 10px;
+    background-color: #de4d4d;
+    color: #ffffff;
+    font-size: 3.2rem;
+    filter: drop-shadow(0 5px 0 #a21f1f);
+    transition: all .3s ease;
+}
+
+.concept__moreButton:hover,
+.news__moreButton:hover {
+    filter: none;
+    transform: translateY(5px);
+}
+
+.concept__moreButtonArrow,
+.news__moreButtonArrow {
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    width: 26px;
+    height: 2px;
+    background-color: #ffffff;
+}
+
+.concept__moreButtonArrow::before,
+.news__moreButtonArrow::before {
+    content: "";
+    position: absolute;
+    top: -4.9px;
+    right: 1px;
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    transform: rotate(-45deg);
+}
+
+/* 遊具・施設の紹介
+==============================================================================*/
+.facility {
+    padding: 128px 4%;
+    background-image: url(../img/facility_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.facility__wrapper {
+    margin: 0 auto;
+    max-width: 1120px;
+}
+
+.facility__sectionTitle {
+    margin-bottom: 64px;
+}
+
+.facility__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 45px;
+}
+
+.facility__item {
+    width: 48.5%;
+}
+
+.facility__image {
+    margin-bottom: 30px;
+}
+
+.facility__imageDesc {
+    font-size: 2.4rem;
+}
+
+/* サービス
+==============================================================================*/
+.service {
+    padding: 120px 0;
+    background-color: #faffdb;
+}
+
+.service__sectionTitle {
+    margin-bottom: 64px;
+}
+
+.slider .service__image {
+    height: 205px;
+    object-fit: cover;
+}
+
+/* お知らせ
+==============================================================================*/
+.news {
+    position: relative;
+    background-color: #fff8db;
+    text-align: center;
+}
+
+/* newsにpadding設定してfadeThisを使うと、飛行機と雲の画像がずれるので、newsのみwrapperにpadding記載 */
+.news__wrapper {
+    margin: 0 auto;
+    padding: 120px 4%;
+}
+
+.news__sectionTitle {
+    margin-bottom: 64px;
+}
+
+.news__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto 45px auto;
+    padding: 38px 74px;
+    max-width: 885px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    text-align: left;
+}
+
+.news__itemDate {
+    width: 26%;
+}
+
+.news__itemTitle {
+    width: 74%;
+}
+
+.news__itemDate,
+.news__itemTitle {
+    border-top: 1px solid #000000;
+}
+
+.news__itemTitleLink,
+.news__itemDateLink {
+    display: block;
+    color: #000000;
+}
+
+.news__itemDateLink {
+    padding: 20px;
+}
+
+.news__itemTitleLink {
+    padding: 20px 0;
+}
+
+.news__itemDate:last-of-type,
+.news__itemTitle:last-of-type {
+    border-bottom: 1px solid #000000;
+}
+
+.news__airplaneImageBox,
+.news__cloudImageBox {
+    position: absolute;
+}
+
+.news__airplaneImageBox {
+    top: 28px;
+    right: 28px;
+}
+
+.news__cloudImageBox {
+    bottom: 28px;
+    left: 28px;
+}
+
+.news__airplaneImage,
+.news__cloudImage {
+    width: 260px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Moreボタンについてはコンセプトの欄に記載 */
+
+/* アクセス
+==============================================================================*/
+.access {
+    padding: 128px 0;
+    background-color: #fff3db;
+}
+
+.access__sectionTitle {
+    margin-bottom: 64px;
+}
+
+.access__googleMap {
+    width: 100%;
+}
+
+/* フッター
+==============================================================================*/
+.footer {
+    padding: 28px 0;
+    background-color: #000000;
+    text-align: center;
+}
+
+.footer__copyright {
+    color: #ffffff;
+}
+
+/* スマホ縦
+==============================================================================*/
+@media screen and (max-width: 479px) {
+
+    /* 各セクション共通 */
+    .concept__sectionTitle,
+    .facility__sectionTitle,
+    .service__sectionTitle,
+    .news__sectionTitle,
+    .access__sectionTitle {
+        margin-bottom: 40px;
+        font-size: 3rem;
+    }
+
+    /* ヘッダー */
+    .header__siteTitle--kidsPark {
+        font-size: 2rem;
+    }
+
+    .header__siteTitle--lava {
+        font-size: 5rem;
+    }
+
+    .header__logoBackground {
+        width: 200px;
+        height: 200px;
+    }
+
+    .header__hamburgerButton {
+        top: 18px;
+        right: 18px;
+    }
+
+    .header__mainvisualImage:first-of-type {
+        background-image: url(../img/mainvisual1-sp.jpg);
+    }
+
+    .header__mainvisualImage:nth-of-type(2) {
+        background-image: url(../img/mainvisual2-sp.jpg);
+    }
+
+    .header__mainvisualImage:last-of-type {
+        background-image: url(../img/mainvisual3-sp.jpg);
+    }
+
+    /* コンセプト */
+    .concept {
+        padding: 80px 16px;
+    }
+
+    .concept__text {
+        padding: 20px;
+    }
+
+    /* 遊具・施設の紹介 */
+    .facility {
+        padding: 80px 16px;
+        background-position: center;
+    }
+
+    .facility__content {
+        flex-direction: column;
+        row-gap: 32px;
+    }
+
+    .facility__item {
+        width: 100%;
+    }
+
+    .facility__image {
+        margin-bottom: 20px;
+    }
+
+    .facility__imageDesc {
+        font-size: 1.6rem;
+    }
+
+    /* サービス */
+    .service {
+        padding: 80px 0;
+    }
+
+    .slider .service__image {
+        height: 135px;
+    }
+
+    /* お知らせ */
+    .news__wrapper {
+        padding: 80px 16px;
+    }
+
+    .news__sectionTitle {
+        z-index: 2;
+    }
+
+    .news__content {
+        flex-direction: column;
+        margin-bottom: 40px;
+        padding: 30px 20px;
+    }
+
+    .news__itemDate {
+        width: 100%;
+    }
+
+    .news__itemTitle {
+        width: 100%;
+        border: none;
+    }
+
+    .news__itemDate:last-of-type {
+        border-bottom: none;
+    }
+
+    .news__itemDateLink {
+        padding: 12px 14px 0;
+    }
+
+    .news__itemTitleLink {
+        padding: 0 14px 12px;
+    }
+
+    .news__moreButton {
+        z-index: 2;
+    }
+
+    .news__airplaneImage,
+    .news__cloudImage {
+        width: 130px;
+        height: 100px;
+    }
+
+    .news__airplaneImageBox {
+        top: 6px;
+        right: 6px;
+    }
+
+    .news__cloudImageBox {
+        bottom: 6px;
+        left: 6px;
+    }
+
+    /* アクセス */
+    .access {
+        padding: 80px 0;
+    }
+
+    .access__googleMap {
+        height: 300px;
+    }
+
+    /* フッター */
+    .footer {
+        padding: 11px 0;
+        font-size: 1.2rem;
+    }
+}
+
+/* スマホ横
+==============================================================================*/
+@media screen and (min-width: 479px) and (max-width: 767px) {
+
+    /* 各セクション共通 */
+    .concept__sectionTitle,
+    .facility__sectionTitle,
+    .service__sectionTitle,
+    .news__sectionTitle,
+    .access__sectionTitle {
+        margin-bottom: 40px;
+        font-size: 3.2rem;
+    }
+
+    /* ヘッダー */
+    .header__mainvisualImage:first-of-type {
+        background-image: url(../img/mainvisual1-sp.jpg);
+    }
+
+    .header__mainvisualImage:nth-of-type(2) {
+        background-image: url(../img/mainvisual2-sp.jpg);
+    }
+
+    .header__mainvisualImage:last-of-type {
+        background-image: url(../img/mainvisual3-sp.jpg);
+    }
+
+    /* コンセプト */
+    .concept {
+        padding: 80px 16px;
+    }
+
+    .concept__text {
+        padding: 20px 30px;
+    }
+
+    /* 遊具・施設の紹介 */
+    .facility {
+        padding: 80px 16px;
+        background-position: center;
+    }
+
+    .facility__content {
+        flex-direction: column;
+        row-gap: 32px;
+    }
+
+    .facility__item {
+        width: 100%;
+    }
+
+    .facility__image {
+        margin-bottom: 20px;
+    }
+
+    .facility__imageDesc {
+        font-size: 1.8rem;
+    }
+
+    /* サービス */
+    .service {
+        padding: 80px 0;
+    }
+
+    .slider .service__image {
+        height: 150px;
+    }
+
+    /* お知らせ */
+    .news__wrapper {
+        padding: 80px 16px;
+    }
+
+    .news__sectionTitle {
+        z-index: 2;
+    }
+
+    .news__content {
+        flex-direction: column;
+        margin-bottom: 40px;
+        padding: 35px 30px;
+    }
+
+    .news__itemDate {
+        width: 100%;
+    }
+
+    .news__itemTitle {
+        width: 100%;
+        border: none;
+    }
+
+    .news__itemDate:last-of-type {
+        border-bottom: none;
+    }
+
+    .news__itemDateLink {
+        padding: 12px 14px 0;
+    }
+
+    .news__itemTitleLink {
+        padding: 0 14px 12px;
+    }
+
+    .news__moreButton {
+        z-index: 2;
+    }
+
+    .news__airplaneImage,
+    .news__cloudImage {
+        width: 130px;
+        height: 100px;
+    }
+
+    .news__airplaneImageBox {
+        top: 6px;
+        right: 6px;
+    }
+
+    .news__cloudImageBox {
+        bottom: 6px;
+        left: 6px;
+    }
+
+    /* アクセス */
+    .access {
+        padding: 80px 0;
+    }
+
+    .access__googleMap {
+        height: 400px;
+    }
+
+    /* フッター */
+    .footer {
+        padding: 11px 0;
+        font-size: 1.2rem;
+    }
+}
+
+/* タブレットや小型PC
+==============================================================================*/
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+
+    /* 各セクション共通 */
+    .concept__sectionTitle,
+    .facility__sectionTitle,
+    .service__sectionTitle,
+    .news__sectionTitle,
+    .access__sectionTitle {
+        margin-bottom: 50px;
+        font-size: 3.4rem;
+    }
+
+    /* ヘッダー */
+    .header__mainvisualImage:first-of-type {
+        background-image: url(../img/mainvisual1-sp.jpg);
+    }
+
+    .header__mainvisualImage:nth-of-type(2) {
+        background-image: url(../img/mainvisual2-sp.jpg);
+    }
+
+    .header__mainvisualImage:last-of-type {
+        background-image: url(../img/mainvisual3-sp.jpg);
+    }
+
+    /* コンセプト */
+    .concept {
+        padding: 100px 16px;
+    }
+
+    .concept__text {
+        padding: 25px 40px;
+    }
+
+    /* 遊具・施設の紹介 */
+    .facility {
+        padding: 100px 16px;
+        background-position: center;
+    }
+
+    .facility__content {
+        flex-direction: column;
+        row-gap: 32px;
+    }
+
+    .facility__item {
+        width: 100%;
+    }
+
+    .facility__image {
+        margin-bottom: 20px;
+    }
+
+    .facility__imageDesc {
+        font-size: 2rem;
+    }
+
+    /* サービス */
+    .service {
+        padding: 100px 0;
+    }
+
+    .slider .service__image {
+        height: 160px;
+    }
+
+    /* お知らせ */
+    .news__wrapper {
+        padding: 100px 16px;
+    }
+
+    .news__sectionTitle {
+        z-index: 2;
+    }
+
+    .news__content {
+        flex-direction: column;
+        margin-bottom: 50px;
+        padding: 35px 30px;
+    }
+
+    .news__itemDate {
+        width: 100%;
+    }
+
+    .news__itemTitle {
+        width: 100%;
+        border: none;
+    }
+
+    .news__itemDate:last-of-type {
+        border-bottom: none;
+    }
+
+    .news__itemDateLink {
+        padding: 12px 14px 0;
+    }
+
+    .news__itemTitleLink {
+        padding: 0 14px 12px;
+    }
+
+    .news__moreButton {
+        z-index: 2;
+    }
+
+    .news__airplaneImage,
+    .news__cloudImage {
+        width: 170px;
+        height: 130px;
+    }
+
+    .news__airplaneImageBox {
+        top: 16px;
+        right: 16px;
+    }
+
+    .news__cloudImageBox {
+        bottom: 16px;
+        left: 16px;
+    }
+
+    /* アクセス */
+    .access {
+        padding: 100px 0;
+    }
+
+    .access__googleMap {
+        height: 500px;
+    }
+
+    /* フッター */
+    .footer {
+        padding: 20px 0;
+        font-size: 1.4rem;
+    }
+}
